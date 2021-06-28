@@ -1,0 +1,26 @@
+{
+  "left_view": {
+    "alpha_start": 10,
+    "alpha_end": -1,
+    "beta_start": 15,
+    "beta_end": 60,
+    "rate_start": 0.2,
+    "rate_end": 0.4
+  },
+  "top_view": {
+    "alpha_start": 20,
+    "alpha_end": 50,
+    "beta_start": -10,
+    "beta_end": 10,
+    "rate_start": 0.33,
+    "rate_end": 0.35
+  },
+  "adhere_view": {
+    "w_start": 10,
+    "w_end": -1,
+    "h_start": 15,
+    "h_end": 60,
+    "phi_start": -10,
+    "phi_end": 10
+  }
+}
