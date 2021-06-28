@@ -26,8 +26,8 @@ STEPS = math.ceil(LEN / BATCH_SIZE)
 HEIGHT = 480
 WIDTH = 720
 
-#image = misc.imread("/home/zx/repo/dataset/rain_test/cityscapes_small/0_0_B.png")
-#edge = misc.imread("/home/zx/repo/dataset/rain_test/cityscapes_small/0_0_E.png")
+#image = misc.imread("repo/dataset/rain_test/cityscapes_small/0_0_B.png")
+#edge = misc.imread("repo/dataset/rain_test/cityscapes_small/0_0_E.png")
 
 
 
@@ -83,9 +83,9 @@ def get_model(model_name, input_shape, dilated=True):
     return model
 
 def get_all():
-    #images = '/home/zx/repo/dataset/rain_test/youtube/geko_all/'
-    images = '/home/zx/repo/dataset/qian_cvpr/test_b/data/'
-    #save_path = '/home/zx/repo/dataset/rain_result/qian/ours/%04d.png'
+    #images = 'repo/dataset/rain_test/youtube/geko_all/'
+    images = 'repo/dataset/qian_cvpr/test_b/data/'
+    #save_path = 'repo/dataset/rain_result/qian/ours/%04d.png'
     save_path = '../result/tmp/%04d.png'
 
     iterator = get_data(images).make_one_shot_iterator()
@@ -107,7 +107,7 @@ def get_all():
         cv2.imwrite(save_path % i, img[:, :, ::-1])
 
 def get_all_on_all_model():
-    images = '/home/zx/repo/dataset/qian_cvpr/test_a/data/'
+    images = 'repo/dataset/qian_cvpr/test_a/data/'
     #model = get_model('whole', [256, 512])
     #weights = '../model/ssim.51_0.00944.hdf5'
 
@@ -136,10 +136,10 @@ def get_all_on_all_model():
             cv2.imwrite(save_path % i, img[:, :, ::-1])
 
 def get_one():
-    #image = misc.imread("/home/zx/repo/dataset/rain_test/youtube/geko/01_B.png")
-    #edge = misc.imread("/home/zx/repo/dataset/rain_test/youtube/geko/01_E.png")
-    image = misc.imread("/home/zx/repo/dataset/qian_cvpr/test_a/data/9_rain.png")
-    edge = misc.imread("/home/zx/repo/dataset/qian_cvpr/test_a/data/9_E.png")
+    #image = misc.imread("repo/dataset/rain_test/youtube/geko/01_B.png")
+    #edge = misc.imread("repo/dataset/rain_test/youtube/geko/01_E.png")
+    image = misc.imread("repo/dataset/qian_cvpr/test_a/data/9_rain.png")
+    edge = misc.imread("repo/dataset/qian_cvpr/test_a/data/9_E.png")
     image = image / 255.0
     edge = edge / 255.0
     image = image.reshape((1,) + image.shape)

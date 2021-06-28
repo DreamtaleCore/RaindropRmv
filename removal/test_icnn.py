@@ -28,8 +28,8 @@ STEPS = math.ceil(LEN / BATCH_SIZE)
 HEIGHT = 480
 WIDTH = 720
 
-#image = misc.imread("/home/zx/repo/dataset/rain_test/cityscapes_small/0_0_B.png")
-#edge = misc.imread("/home/zx/repo/dataset/rain_test/cityscapes_small/0_0_E.png")
+#image = misc.imread("repo/dataset/rain_test/cityscapes_small/0_0_B.png")
+#edge = misc.imread("repo/dataset/rain_test/cityscapes_small/0_0_E.png")
 
 
 
@@ -85,11 +85,11 @@ def get_model(model_name, input_shape, dilated=True):
     return model
 
 def get_all():
-    #images = '/home/zx/repo/dataset/rain_test/youtube/geko_all/'
-    images = '/home/lyf/ws/ijcv/repo/dataset/rain_val_with_sem/'
+    #images = 'repo/dataset/rain_test/youtube/geko_all/'
+    images = 'repo/dataset/rain_val_with_sem/'
     image_names = glob.glob(images + '*_B.png')
     image_names.sort()
-    #save_path = '/home/zx/repo/dataset/rain_result/qian/ours/%04d.png'
+    #save_path = 'repo/dataset/rain_result/qian/ours/%04d.png'
     save_path = '../result/rain_val_with_sem/{}'
 
     if not os.path.exists(save_path):
@@ -124,10 +124,10 @@ def get_all():
     print('\nDone.')
 
 def get_one():
-    #image = misc.imread("/home/zx/repo/dataset/rain_test/youtube/geko/01_B.png")
-    #edge = misc.imread("/home/zx/repo/dataset/rain_test/youtube/geko/01_E.png")
-    image = misc.imread("/home/zx/repo/dataset/qian_cvpr/test_a/data/9_rain.png")
-    edge = misc.imread("/home/zx/repo/dataset/qian_cvpr/test_a/data/9_E.png")
+    #image = misc.imread("repo/dataset/rain_test/youtube/geko/01_B.png")
+    #edge = misc.imread("repo/dataset/rain_test/youtube/geko/01_E.png")
+    image = misc.imread("repo/dataset/qian_cvpr/test_a/data/9_rain.png")
+    edge = misc.imread("repo/dataset/qian_cvpr/test_a/data/9_E.png")
     image = image / 255.0
     edge = edge / 255.0
     image = image.reshape((1,) + image.shape)

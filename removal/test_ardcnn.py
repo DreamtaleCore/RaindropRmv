@@ -64,8 +64,7 @@ def map_func(image, mask=None):
 
 
 def get_all():
-    #images = '/home/zx/repo/dataset/rain_test/youtube/geko_all/'
-    images = '/home/lyf/ws/ijcv/repo/dataset/test_bezier_PR/'
+    images = 'repo/dataset/test_PR/'
     iterator = get_data(images).make_one_shot_iterator()
     image, _ = iterator.get_next()
 
@@ -73,7 +72,7 @@ def get_all():
     ard_cnn = ARDCNN(image_input, False)
     model = keras.Model(image_input, ard_cnn.outputs)
 
-    weights = '../model/bezier/ard.40_0.00555.hdf5'
+    weights = '../model/ard.40_0.00555.hdf5'
     model.load_weights(weights)
 
     out = model.predict(image, steps=STEPS)
@@ -81,16 +80,16 @@ def get_all():
     path = glob.glob(images + '*B.png')
     path.sort()
 
-    #np.save('/home/zx/repo/dataset/rain_result/ours/mask/mask', out)
+    #np.save('dataset/rain_result/ours/mask/mask', out)
     for i, img in enumerate(out):
         img = np.where(img < 0.5, 0.0, 1.0)
         img = img * 255.0
         img = img.astype(np.uint8)
-        cv2.imwrite('/home/ros/ws/ijcv/repo/rain_result/ours/mask-PR/{}'.format(os.path.basename(path[i]).replace('B.png', 'M_pred.png')), img)
+        cv2.imwrite('repo/rain_result/ours/mask-PR/{}'.format(os.path.basename(path[i]).replace('B.png', 'M_pred.png')), img)
         #cv2.imwrite(path[i].replace('B.png', 'P.png'), img)
 
 def eval_all():
-    images = '/home/zx/repo/dataset/rain_test/cityscapes_small/'
+    images = 'dataset/rain_test/cityscapes_small/'
     iterator = get_data(images).make_initializable_iterator()
     image, _ = iterator.get_next()
 
@@ -143,7 +142,7 @@ def show_score(confusion_matrixs):
         print('Index: %d, precision: %f, recall: %f, f1: %f' % (i, p, r, f1))
 
 def get_one():
-    #image = misc.imread("/home/zx/repo/dataset/rain_test/youtube/geko/01_B.png")
+    #image = misc.imread("dataset/rain_test/youtube/geko/01_B.png")
     image = misc.imread("../result/fuse/00000.png")
     image = image / 255.0
     image = image.reshape((1, 256, 512, 3))

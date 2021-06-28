@@ -57,8 +57,8 @@ def freeze(model):
 
 if __name__ == '__main__':
 
-    x_path = '/home/ros/ws/ijcv/repo/dataset/rain_test_bezier/'
-    y_path = '/home/ros/ws/ijcv/repo/dataset/rain_test_bezier/'
+    x_path = 'repo/dataset/rain_test'
+    y_path = 'repo/dataset/rain_test'
     data_it = DataSet(x_path, y_path, batch_size=BATCH, mode='whole')()
     rain, edge, clear = data_it.get_next()
 
@@ -69,14 +69,14 @@ if __name__ == '__main__':
     icnn_model = keras.Model([rain_input, edge_input], icnn.outputs)
     ardcnn = ARDCNN(rain_input, False)
     ardcnn_model = keras.Model(rain_input, ardcnn.outputs)
-    icnn_model.load_weights('../model/bezier/icnn_weights.50_0.00580.hdf5')
-    ardcnn_model.load_weights('../model/bezier/ard.40_0.00555.hdf5')
+    icnn_model.load_weights('../model/icnn_weights.50_0.00580.hdf5')
+    ardcnn_model.load_weights('../model/ard.40_0.00555.hdf5')
     freeze(icnn_model)
     freeze(ardcnn_model)
 
     combine = COMBINE([icnn.outputs, ardcnn.outputs, rain_input], True, 'resnet', True)
     model = keras.Model(inputs=[rain_input, edge_input], outputs=combine.outputs)
-    model.load_weights('../model/bezier/full.59_0.00728.hdf5')
+    model.load_weights('../model/full.59_0.00728.hdf5')
 
     #optimizer = keras.optimizers.Adam(0.001)
     #optimizer = keras.optimizers.Nadam(0.001)
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     loss = mix_loss
     #loss = 'mean_squared_error'
     model.compile(optimizer=optimizer, loss=loss, metrics=['mae'])
-    callbacks = [keras.callbacks.ModelCheckpoint('../model/bezier/fine.{epoch:02d}_{loss:.5f}.hdf5',
+    callbacks = [keras.callbacks.ModelCheckpoint('../model/fine.{epoch:02d}_{loss:.5f}.hdf5',
                                                 'loss',
                                                 save_best_only=False,
                                                 mode='min'),

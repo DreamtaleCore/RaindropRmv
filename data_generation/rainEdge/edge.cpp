@@ -18,9 +18,7 @@ cv::Vec3f absdiff(cv::Vec3b &a, cv::Vec3b &b);
 
 int main() {
     vector<string> imgPath;
-    // getFiles("/home/hzx/data/RAIN_DATASET/ALIGNED_PAIRS/REAL_DROPLETS/*.png", imgPath);
-    // getFiles("/home/lyf/ws/ijcv/repo/dataset/rain_val_bezier_rand/*_B.png", imgPath);
-    getFiles("/home/lyf/ws/ijcv/repo/dataset/rain_val_with_sem/*_B.png", imgPath);
+    getFiles("repo/dataset/rain_val_with_sem/*_B.png", imgPath);
 
     int totalIndex = imgPath.size();
     cout << totalIndex << endl;

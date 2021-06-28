@@ -30,8 +30,8 @@ STEPS = math.ceil(LEN / BATCH_SIZE)
 HEIGHT = 480
 WIDTH = 720
 
-#image = misc.imread("/home/zx/repo/dataset/rain_test/cityscapes_small/0_0_B.png")
-#edge = misc.imread("/home/zx/repo/dataset/rain_test/cityscapes_small/0_0_E.png")
+#image = misc.imread("repo/dataset/rain_test/cityscapes_small/0_0_B.png")
+#edge = misc.imread("repo/dataset/rain_test/cityscapes_small/0_0_E.png")
 
 
 def get_data(images, edges=None):
@@ -93,7 +93,7 @@ def get_model(model_name, input_shape, dilated=True):
 
 
 def get_all():
-    images = '/home/lyf/ws/ijcv/repo/dataset/rain_val_with_sem/'
+    images = 'repo/dataset/rain_val_with_sem/'
     image_names = glob.glob(images + '*_B.png')
     image_names.sort()
 
